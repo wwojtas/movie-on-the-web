@@ -2,6 +2,7 @@ package com.example.movieclub.domain.genre;
 
 import com.example.movieclub.domain.genre.dto.GenreDto;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -25,5 +26,13 @@ public class GenreService {
          return StreamSupport.stream(genreRepository.findAll().spliterator(), false)
                  .map(genre -> GenreDtoMapper.map(genre))
                  .collect(Collectors.toList());
+    }
+
+    @Transactional
+    public void addGenre(GenreDto genre){
+        Genre genreToSave = new Genre();
+        genreToSave.setName(genre.getName());
+        genreToSave.setDescription(genre.getDescription());
+        genreRepository.save(genreToSave);
     }
 }
