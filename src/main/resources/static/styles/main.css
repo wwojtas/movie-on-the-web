@@ -1,3 +1,4 @@
+
 * {
     margin: 0;
     padding: 0;
@@ -24,6 +25,8 @@ a {
     flex: 1;
 }
 
+/*MENU START*/
+
 .logo,
 #toggle-icon {
     color: #ffc107;
@@ -38,7 +41,7 @@ a {
 .menu-item {
     width: 100%;
     padding: 16px;
-    border-bottom: 1px solid #6d6d6d;
+    border-bottom: 1px #6d6d6d solid;
     text-align: center;
     display: none;
 }
@@ -53,30 +56,34 @@ a {
     padding: 16px 32px;
     font-size: 20px;
 }
+/*MENU END*/
+
+/*FOOTER START*/
 
 .footer {
     padding: 8px;
     text-align: center;
 }
+/*FOOTER END*/
 
-/*jumbotron*/
-
+/*Jumbotron START*/
 .jumbotron {
     background-image: url("../img/jumbotron.jpg");
     background-position: center;
     background-repeat: no-repeat;
-    padding: 2em;
+    padding: 2rem;
     text-align: center;
 }
-
 .jumbotron-header {
     font-size: 3rem;
     margin: 1rem 0;
 }
-
 .jumbotron-description {
     font-size: 1.2rem;
 }
+/*Jumbotron END*/
+
+/*Listing START*/
 
 .list-heading,
 .list-description {
@@ -114,10 +121,10 @@ a {
 .movie-list-item-rating {
     font-size: 1.6rem;
 }
+/*Listing END*/
 
-/*
-movie.html
-*/
+/*Movie.html*/
+
 .movie-summary {
     display: flex;
     margin-top: 16px;
@@ -153,10 +160,12 @@ movie.html
     min-width: 200px;
 }
 
+
 .movie-rating-form > p {
     text-align: center;
     margin-bottom: 16px;
 }
+
 
 .movie-rating-value {
     font-size: 4rem;
@@ -194,10 +203,9 @@ movie.html
     display: block;
     margin: auto;
 }
+/*Movie.html END*/
 
-/*
-error pages START
-*/
+/*error pages START*/
 
 .error-container {
     margin: 32px auto;
@@ -211,10 +219,7 @@ error pages START
     font-size: 2rem;
     margin: 16px 0;
 }
-
-/*
-error pages END
-*/
+/*error pages END*/
 
 .list-border {
     margin: auto;
@@ -222,13 +227,15 @@ error pages END
 }
 .list-border > li {
     font-size: 1.2rem;
-    border: 1px solid #6d6d6d;
+    border: 1px #6d6d6d solid;
     padding: 16px;
     text-align: center;
 }
 
+
 @media only screen and (min-width: 992px) {
-    .menu-toggle{
+
+    .menu-toggle {
         display: none;
     }
 
@@ -242,11 +249,16 @@ error pages END
         flex: 1;
     }
 
+
     .main-content,
     .menu {
         align-self: center;
         width: 960px;
     }
+}
+
+
+@media only screen and (min-width: 992px) {
 
     .movie {
         display: flex;
@@ -262,5 +274,4 @@ error pages END
         font-size: 1.2rem;
         margin: 0 4px;
     }
-
 }
