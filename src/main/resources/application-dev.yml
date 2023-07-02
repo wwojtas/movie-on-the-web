@@ -2,8 +2,11 @@ spring:
   datasource:
     url: jdbc:h2:mem:test
   liquibase:
-    change-log: classpath:db/changelog/master.xml
     contexts: dev
-  jpa:
-    hibernate:
-      ddl-auto: validate
+    change-log: classpath:db/changelog/master.xml
+  web:
+    resources:
+      static-locations: classpath:/static/,file:./uploads/
+app:
+  storage:
+    location: ./uploads/

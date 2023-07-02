@@ -1,33 +1,18 @@
-package com.example.movieclub.domain.movie;
+package com.example.movieclub.domain.movie.dto;
 
-import com.example.movieclub.domain.genre.Genre;
-import jakarta.persistence.*;
+import org.springframework.web.multipart.MultipartFile;
 
-@Entity
-public class Movie {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class MovieSaveDto {
     private String title;
     private String originalTitle;
     private String shortDescription;
     private String description;
     private String youtubeTrailerId;
     private Integer releaseYear;
-    @ManyToOne
-    @JoinColumn(name = "genre_id", referencedColumnName = "id")
-    private Genre genre;
+    private String genre;
     private boolean promoted;
-    private String poster;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
+    private MultipartFile poster;
 
     public String getTitle() {
         return title;
@@ -77,11 +62,11 @@ public class Movie {
         this.releaseYear = releaseYear;
     }
 
-    public Genre getGenre() {
+    public String getGenre() {
         return genre;
     }
 
-    public void setGenre(Genre genre) {
+    public void setGenre(String genre) {
         this.genre = genre;
     }
 
@@ -93,11 +78,11 @@ public class Movie {
         this.promoted = promoted;
     }
 
-    public String getPoster() {
+    public MultipartFile getPoster() {
         return poster;
     }
 
-    public void setPoster(String poster) {
+    public void setPoster(MultipartFile poster) {
         this.poster = poster;
     }
 }
