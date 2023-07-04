@@ -4,7 +4,7 @@ import com.example.movieclub.domain.genre.Genre;
 import com.example.movieclub.domain.genre.GenreRepository;
 import com.example.movieclub.domain.movie.dto.MovieDto;
 import com.example.movieclub.domain.movie.dto.MovieSaveDto;
-import com.example.movieclub.domain.storage.FileStorageService;
+import com.example.movieclub.storage.FileStorageService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

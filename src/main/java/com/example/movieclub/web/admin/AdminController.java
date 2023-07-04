@@ -1,4 +1,4 @@
-package com.example.movieclub.domain.web.admin;
+package com.example.movieclub.web.admin;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

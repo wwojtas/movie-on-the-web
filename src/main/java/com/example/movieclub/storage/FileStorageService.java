@@ -1,4 +1,4 @@
-package com.example.movieclub.domain.storage;
+package com.example.movieclub.storage;
 
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Value;

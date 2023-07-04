@@ -1,4 +1,4 @@
-package com.example.movieclub.domain.web;
+package com.example.movieclub.web;
 
 import com.example.movieclub.domain.genre.GenreService;
 import com.example.movieclub.domain.genre.dto.GenreDto;
