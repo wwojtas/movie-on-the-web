@@ -6,6 +6,8 @@ import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.stereotype.Service;
@@ -25,8 +27,7 @@ public class CustomSecurityConfig {
                 .anyRequest().permitAll()
         )
                 .formLogin(login -> login
-                        .loginPage("/login")
-                        .permitAll()
+                        .loginPage("/login").permitAll()
                 )
                 .logout(logout -> logout
                         .logoutRequestMatcher(new AntPathRequestMatcher("/logout/**", HttpMethod.GET.name()))
@@ -43,5 +44,10 @@ public class CustomSecurityConfig {
                 "scripts/**",
                 "/styles/**"
         );
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder(){
+        return PasswordEncoderFactories.createDelegatingPasswordEncoder();
     }
 }
