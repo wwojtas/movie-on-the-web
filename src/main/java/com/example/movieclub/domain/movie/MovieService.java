@@ -5,10 +5,12 @@ import com.example.movieclub.domain.genre.GenreRepository;
 import com.example.movieclub.domain.movie.dto.MovieDto;
 import com.example.movieclub.domain.movie.dto.MovieSaveDto;
 import com.example.movieclub.storage.FileStorageService;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -58,5 +60,12 @@ public class MovieService {
             movie.setPoster(savedFileName);
         }
         movieRepository.save(movie);
+    }
+
+    public List<MovieDto> findTopMovies(int size){
+        Pageable page = Pageable.ofSize(size);
+        return movieRepository.findTopByRating(page).stream()
+                .map(MovieDtoMapper::map)
+                .collect(Collectors.toList());
     }
 }
