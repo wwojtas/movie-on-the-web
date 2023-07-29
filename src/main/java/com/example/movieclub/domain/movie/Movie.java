@@ -1,7 +1,11 @@
 package com.example.movieclub.domain.movie;
 
 import com.example.movieclub.domain.genre.Genre;
+import com.example.movieclub.domain.rating.Rating;
 import jakarta.persistence.*;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Movie {
@@ -18,6 +22,8 @@ public class Movie {
     @ManyToOne
     @JoinColumn(name = "genre_id", referencedColumnName = "id")
     private Genre genre;
+    @OneToMany(mappedBy = "movie")
+    private Set<Rating> ratings = new HashSet<>();
     private boolean promoted;
     private String poster;
 
@@ -99,5 +105,13 @@ public class Movie {
 
     public void setPoster(String poster) {
         this.poster = poster;
+    }
+
+    public Set<Rating> getRatings() {
+        return ratings;
+    }
+
+    public void setRatings(Set<Rating> ratings) {
+        this.ratings = ratings;
     }
 }
