@@ -2,7 +2,9 @@ package com.example.movieclub.web;
 
 import com.example.movieclub.domain.movie.MovieService;
 import com.example.movieclub.domain.movie.dto.MovieDto;
+import com.example.movieclub.domain.rating.RatingService;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,16 +16,25 @@ import java.util.Optional;
 @Controller
 public class MovieController {
     private MovieService movieService;
+    private RatingService ratingService;
 
-    public MovieController(MovieService movieService) {
+    public MovieController(MovieService movieService, RatingService ratingService) {
         this.movieService = movieService;
+        this.ratingService = ratingService;
     }
 
     @GetMapping("/film/{id}")
-    public String getMovie(@PathVariable long id, Model model){
+    public String getMovie(@PathVariable long id,
+                           Model model,
+                           Authentication authentication){
         MovieDto movie = movieService.findMovieById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
         model.addAttribute("movie", movie);
+        if (authentication != null){
+            String currentUserEmail = authentication.getName();
+            Integer rating = ratingService.getUserRatingForMovie(currentUserEmail, id).orElse(0);
+            model.addAttribute("userRating", rating);
+        }
         return "movie";
     }
 }
